@@ -2,10 +2,7 @@
 abstract: 'Build your development environment by perl-based DSL.'
 author:
   - 'magnolia <magnolia.k@me.com>'
-build_requires:
-  ExtUtils::MakeMaker: 0
-configure_requires:
-  ExtUtils::MakeMaker: 6.56
+build_requires: {}
 dynamic_config: 1
 generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921'
 license: perl
@@ -18,6 +15,8 @@ no_index:
     - t
     - inc
     - xt
-requires:
-  perl: 5.012
-version: 0.7011
+resources:
+  bugtracker: https://github.com/magnolia-k/Enbld/issues
+  homepage: https://github.com/magnolia-k/Enbld
+  repository: https://github.com/magnolia-k/Enbld.git
+version: 0.7012
