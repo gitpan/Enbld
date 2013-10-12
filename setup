@@ -1,0 +1,70 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use FindBin;
+use File::Spec;
+
+main() unless caller();
+
+sub main {
+
+    check_env();
+
+    my $home = $ENV{PERL_ENBLD_HOME} ? $ENV{PERL_ENBLD_HOME} :
+        File::Spec->catdir( $ENV{HOME}, '.enbld' );
+
+    print "=====> Install Enbld to $home.\n";
+
+    install_app( $home );
+
+    print "=====> Finish installation.\n";
+
+    print "Please add following path to PATH.\n";
+    print "\n";
+    print " " x 4 . '$HOME/.enbld/extlib/bin' . "\n";
+    print " " x 4 . '$HOME/.enbld/bin'        . "\n";
+    print " " x 4 . '$HOME/.enbld/sbin'       . "\n";
+    print "\n";
+    print "Please add following path to MANPATH.\n";
+    print "\n";
+    print " " x 4 . '$HOME/.enbld/share/man' . "\n";
+    print " " x 4 . '$HOME/.enbld/man'       . "\n";
+    print "\n";
+}
+
+sub check_env {
+
+    # perl version check
+    if ( $] < '5.012' ) {
+        die "Sorry, Enbld requires perl 5.12.0 or above.\n";
+    }
+}
+
+sub install_app {
+    my $home = shift;
+
+    print "-----> Install Enbld's files.\n";
+
+    my $dir = $FindBin::Bin;
+    my $app_install = File::Spec->catdir( $home, 'extlib' );
+
+    system(
+            '/usr/bin/perl',
+            File::Spec->catfile( $dir, 'Makefile.PL' ),
+            'INSTALL_BASE=' . $app_install
+            );
+
+    if ( $? >> 8 ) { die "Installing Enbld fail!\n" }
+
+    system( 'make' );
+
+    if ( $? >> 8 ) { die "Installing Enbld fail!\n" }
+
+    system( 'make', 'install' );
+
+    if ( $? >> 8 ) { die "Installing Enbld fail!\n" }
+
+    return $app_install
+}
