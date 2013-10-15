@@ -6,7 +6,7 @@ use warnings;
 use FindBin qw/$Script/;
 use Getopt::Long;
 
-our $VERSION = '0.7013';
+our $VERSION = '0.7014';
 
 require Exporter;
 our @ISA    = qw(Exporter);
@@ -623,7 +623,7 @@ When not running, it is waiting for the report :)
 B<Success of building of all the versions is not guaranteed. Since log file is displayed when building goes wrong, please analyze and send report:)>
 
 
-=head2 INSTALLATION
+=head1 INSTALLATION
 
  $ git clone https://github.com/magnolia-k/Enbld.git
  $ cd Enbld
@@ -824,9 +824,9 @@ Subcommand 'upgrade' upgrade outdated software.
 
 =head1 SEE ALSO
 
-L<lib/Enbld::Tutorial>
+L<Enbld::Tutorial>
 
-L<bin/enblder>
+L<enblder>
 
 =head1 COPYRIGHT
 

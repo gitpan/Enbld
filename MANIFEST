@@ -179,4 +179,4 @@ xt/testlib/Enbld/Definition/Brokenapp.pm
 xt/testlib/Enbld/Definition/Dummy.pm
 xt/testlib/Enbld/Definition/Testapp.pm
 xt/testlib/Enbld/Definition/Testdependant.pm
-META.yml                                 Module meta-data (added by MakeMaker)
+META.yml                                 Module YAML meta-data (added by MakeMaker)
