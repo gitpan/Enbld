@@ -6,7 +6,7 @@ use warnings;
 use FindBin qw/$Script/;
 use Getopt::Long;
 
-our $VERSION = '0.7017';
+our $VERSION = '0.7018';
 
 require Exporter;
 our @ISA    = qw(Exporter);
@@ -399,11 +399,11 @@ sub to($) {
         _err( "Function 'to' requsres string type parameter." );
     }
 
-    if ( $rcfile_condition->{directory} =~ /\s/ ) {
+    if ( $to =~ /\s/ ) {
         _err( "Function 'to' must not contain space character." );
     }
 
-    $rcfile_condition->{directory} = shift;
+    $rcfile_condition->{directory} = $to;
 }
 
 sub content($) {
