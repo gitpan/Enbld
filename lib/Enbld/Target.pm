@@ -10,7 +10,7 @@ use version;
 use File::Spec;
 use File::Path qw/make_path remove_tree/;
 use File::Find;
-use File::Copy;
+use File::Copy::Recursive qw/rcopy/;
 use autodie;
 use List::Util qw/first/;
 
@@ -540,7 +540,7 @@ sub _copy_files {
     return $self unless ( my $dirs = $self->{attributes}->CopyFiles );
 
     for my $dir ( @{ $dirs } ) {
-        recursive_copy(
+        rcopy(
                 File::Spec->catdir( $self->{build},   $dir ),
                 File::Spec->catdir( $self->{install}, $dir )
                 );
@@ -584,7 +584,7 @@ sub _apply_patchfiles {
         my @parse = split( /\//, $patchfile );
         my $path = File::Spec->catfile( $self->{build}, $parse[-1] );
 
-        Enbld::HTTP->new( $patchfile )->download( $path );
+        Enbld::HTTP->download( $patchfile, $path );
         Enbld::Message->notify( "--> Apply patch $parse[-1]." );
 
         system( "patch -p0 < $path >> $logfile 2>&1" );
@@ -599,8 +599,9 @@ sub _setup_build_directory {
             $self->{attributes}->Filename
             );
 
-    my $http = Enbld::HTTP->new( $self->{attributes}->URL );
-    my $archivefile = $http->download_archivefile( $path );
+    my $archivefile =
+        Enbld::HTTP->download_archivefile( $self->{attributes}->URL, $path );
+
     my $build = $archivefile->extract( Enbld::Home->build );
 
     return ( $self->{build} = $build );

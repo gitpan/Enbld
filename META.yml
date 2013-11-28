@@ -4,7 +4,7 @@ author:
   - 'magnolia <magnolia.k@me.com>'
 build_requires: {}
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921'
+generated_by: 'ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,4 +19,4 @@ resources:
   bugtracker: https://github.com/magnolia-k/Enbld/issues
   homepage: https://github.com/magnolia-k/Enbld
   repository: https://github.com/magnolia-k/Enbld.git
-version: 0.7019
+version: 0.7021
