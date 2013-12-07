@@ -13,7 +13,6 @@ sub initialize {
     $self->{defined}{ArchiveName}       =   'libevent';
     $self->{defined}{WebSite}           =   'http://libevent.org';
     $self->{defined}{VersionForm}       =   '\d\.\d\.\d{1,2}';
-    $self->{defined}{Extension}         =   'tar.gz';
     $self->{defined}{IndexSite}         =
         'http://libevent.org/old-releases.html';
     $self->{defined}{DownloadSite}      =
@@ -49,3 +48,25 @@ sub set_index_parser_form {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Libevent - definition module for libevent
+
+=head1 SEE ALSO
+
+L<libevent|http://libevent.org>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

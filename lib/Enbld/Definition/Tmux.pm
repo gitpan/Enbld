@@ -10,13 +10,10 @@ sub initialize {
 
     $self->SUPER::initialize;
 
-    $self->{defined}{IndexSite}         =
-        'http://sourceforge.net/projects/tmux/files/tmux/';
     $self->{defined}{AdditionalArgument}   =  \&set_argument;
     $self->{defined}{ArchiveName}       =   'tmux';
     $self->{defined}{WebSite}           =   'http://tmux.sourceforge.net';
     $self->{defined}{VersionForm}       =   '\d\.\d';
-    $self->{defined}{Extension}         =   'tar.gz';
     $self->{defined}{Dependencies}      =   [ 'pkgconfig', 'libevent' ];
     $self->{defined}{DownloadSite}      =
         'http://sourceforge.net/projects/tmux/files/tmux/';
@@ -61,15 +58,35 @@ sub set_index_parser_form {
 sub set_URL {
     my $attributes = shift;
 
-    my $site = 'http://sourceforge.net/projects/tmux/files/tmux/';
-
     my $dir  = $attributes->ArchiveName . '-' . $attributes->Version;
     my $file = $attributes->ArchiveName . '-' . $attributes->Version .
         '.' . $attributes->Extension;
 
-    my $url = $site . $dir . '/' . $file . '/download';
+    my $url = $attributes->DownloadSite . $dir . '/' . $file . '/download';
 
     return $url;
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Tmux - definition module for Tmux
+
+=head1 SEE ALSO
+
+L<tmux|http://tmux.sourceforge.net>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

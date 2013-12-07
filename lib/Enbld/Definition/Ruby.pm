@@ -15,17 +15,11 @@ sub initialize {
     $self->{defined}{ArchiveName}    = 'ruby';
     $self->{defined}{WebSite}        = 'https://www.ruby-lang.org';
     $self->{defined}{VersionForm}    = '\d\.\d\.\d-p\d{1,3}';
-    $self->{defined}{Extension}      = 'tar.gz';
     $self->{defined}{Dependencies}   = \&set_Dependencies;
     $self->{defined}{DownloadSite}   = 'http://cache.ruby-lang.org/pub/ruby/';
 
     $self->{defined}{AdditionalArgument} = \&set_argument;
     $self->{defined}{SortedVersionList}  = \&set_sorted_version_list;
-
-    $self->{defined}{CommandConfigure}  = './configure';
-    $self->{defined}{CommandMake}       = 'make';
-    $self->{defined}{CommandTest}       = 'make test';
-    $self->{defined}{CommandInstall}    = 'make install';
 
     return $self;
 }
@@ -49,3 +43,25 @@ sub set_argument {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Ruby - definition module for Ruby Programming Language
+
+=head1 SEE ALSO
+
+L<Ruby Programming Language|https://www.ruby-lang.org>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

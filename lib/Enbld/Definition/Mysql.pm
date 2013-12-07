@@ -19,7 +19,6 @@ sub initialize {
     $self->{defined}{ArchiveName}       =   'mysql';
     $self->{defined}{WebSite}           =   'http://www.mysql.com';
     $self->{defined}{VersionForm}       =   '5\.\d\.\d{1,2}';
-    $self->{defined}{Extension}         =   'tar.gz';
     $self->{defined}{DownloadSite}      =   'http://www.mysql.com/';
 
     $self->{defined}{Dependencies}      =   [ 'cmake' ];
@@ -99,3 +98,25 @@ sub set_url {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Mysql - definition module for MySQL
+
+=head1 SEE ALSO
+
+L<MySQL|http://downloads.mysql.com/archives/community/>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

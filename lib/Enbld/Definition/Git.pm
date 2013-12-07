@@ -15,7 +15,6 @@ sub initialize {
     $self->{defined}{ArchiveName}       =   'git';
     $self->{defined}{WebSite}           =   'http://git-scm.com';
     $self->{defined}{VersionForm}       =   '1\.\d\.\d{1,2}(\.\d{1,2})?';
-    $self->{defined}{Extension}         =   'tar.gz';
     $self->{defined}{DownloadSite}      =
         'http://git-core.googlecode.com/files/';
 
@@ -42,3 +41,25 @@ sub set_index_parser_form {
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Git - definition module for git
+
+=head1 SEE ALSO
+
+L<git|http://git-scm.com>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

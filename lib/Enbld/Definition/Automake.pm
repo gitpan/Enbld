@@ -10,20 +10,37 @@ sub initialize {
 
     $self->SUPER::initialize;
 
-    $self->{defined}{ArchiveName}       =   'automake';
-    $self->{defined}{WebSite}           =   'http://www.gnu.org/software/automake/';
-    $self->{defined}{VersionForm}       =   '1\.\d{1,2}(\.\d{1,2})?';
-    $self->{defined}{Extension}         =   'tar.gz';
-    $self->{defined}{DownloadSite}      =   'http://ftp.gnu.org/gnu/automake/';
+    $self->{defined}{WebSite}      = 'http://www.gnu.org/software/automake/';
+    $self->{defined}{DownloadSite} = 'http://ftp.gnu.org/gnu/automake/';
 
-    $self->{defined}{Dependencies}      =   [ 'autoconf' ];
+    $self->{defined}{ArchiveName}  = 'automake';
+    $self->{defined}{VersionForm}  = '1\.\d{1,2}(\.\d{1,2})?';
 
-    $self->{defined}{CommandConfigure}  =   './configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make check';
-    $self->{defined}{CommandInstall}    =   'make install';
+    $self->{defined}{Dependencies} = [ 'autoconf' ];
 
     return $self;
 }
 
 1;
+
+=pod
+
+=head1 NAME
+
+Enbld::Definition::Automake - definition module for GNU Automake
+
+=head1 SEE ALSO
+
+L<GNU Automake|http://www.gnu.org/software/automake/>
+L<Enbld::Definition>
+
+=head1 COPYRIGHT
+
+copyright 2013- Magnolia C<< <magnolia.k@me.com> >>.
+
+=head1 LICENSE
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

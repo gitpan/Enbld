@@ -3,7 +3,7 @@ package Enbld;
 use 5.012;
 use warnings;
 
-our $VERSION = '0.7023';
+our $VERSION = '0.7024';
 
 use FindBin qw/$Script/;
 use Getopt::Long;
@@ -572,7 +572,7 @@ Now, Enbld supports for installation below software.
  python         http://www.python.org
  rakudostar     http://rakudo.org
  ruby           https://www.ruby-lang.org
- scala          http://www.cmake.org
+ scala          http://www.scala-lang.org
  tmux           http://tmux.sourceforge.net
  tree           http://mama.indstate.edu/users/ice/tree/
  vim            http://www.vim.org
