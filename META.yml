@@ -2,9 +2,12 @@
 abstract: 'Yet another package manager for building development environment'
 author:
   - 'magnolia <magnolia.k@me.com>'
-build_requires: {}
+build_requires:
+  ExtUtils::MakeMaker: 0
+  Test::Exception: 0
+  Test::Output: 0
 dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921'
+generated_by: 'ExtUtils::MakeMaker version 6.84, CPAN::Meta::Converter version 2.133380'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,8 +18,15 @@ no_index:
     - t
     - inc
     - xt
+requires:
+  File::Copy::Recursive: 0
+  LWP: 0
+  LWP::Protocol::https: 0
+  Mozilla::CA: 0
+  Try::Lite: 0
+  perl: 5.012
 resources:
   bugtracker: https://github.com/magnolia-k/Enbld/issues
   homepage: https://github.com/magnolia-k/Enbld
   repository: https://github.com/magnolia-k/Enbld.git
-version: 0.7026
+version: 0.7027
