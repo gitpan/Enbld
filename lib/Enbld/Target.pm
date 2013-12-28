@@ -1,6 +1,6 @@
 package Enbld::Target;
 
-use 5.012;
+use strict;
 use warnings;
 
 use Carp;
@@ -468,6 +468,7 @@ sub _make {
         return $self;
     }
 
+    # this code for tree command...tree don't has configure
     my $args = $self->{attributes}->Prefix . $self->{install};
 
     if ( $self->{attributes}->AdditionalArgument ) {
@@ -554,7 +555,7 @@ sub _exec {
 
     Enbld::Message->notify( "--> $cmd" );
 
-    system( "$cmd >> $logfile 2>&1" );
+    system( "LANG=C;$cmd >> $logfile 2>&1" );
 
     return $self unless $?;
 

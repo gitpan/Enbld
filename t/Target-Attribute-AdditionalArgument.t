@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-use 5.012;
+use strict;
 use warnings;
 
 use Test::More;
@@ -9,6 +9,8 @@ use Test::Exception;
 require Enbld::Target::AttributeCollector;
 
 my $no = Enbld::Target::AttributeCollector->new;
+$no->add( 'DarwinArgument' );
+$no->add( 'DefaultArgument' );
 $no->add( 'AdditionalArgument' );
 is( $no->AdditionalArgument, '', 'no parameter' );
 

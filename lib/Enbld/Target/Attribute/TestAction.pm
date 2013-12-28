@@ -1,7 +1,9 @@
-package Enbld::Target::Attribute::CommandMake;
+package Enbld::Target::Attribute::TestAction;
 
 use strict;
 use warnings;
+
+use Carp;
 
 use parent qw/Enbld::Target::AttributeExtension::Command/;
 
@@ -9,28 +11,19 @@ sub initialize {
     my ( $self, $param ) = @_;
 
     if ( ! defined $param ) {
-    
-        $self->{value} = $self->make_command;
+        $self->{value} = 'check';
         $self->{is_evaluated}++;
 
         return $self;
     }
 
-    if ( $param ) {
+    if ( $param ) { 
         $self->SUPER::initialize( $param );
         return $self;
     }
 
-    # empty string is valid.
-    $self->{is_evaluated}++;
-}
-
-sub validate {
-    my ( $self, $string ) = @_;
-
-    # nothing check now.
-
-    return $string;
+    require Enbld::Exception;
+    croak( Enbld::Exception->new( "Attribute 'TestAction' isn't defined" ) );
 }
 
 1;

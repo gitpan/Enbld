@@ -1,6 +1,6 @@
 package Enbld::Definition::Git;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -20,10 +20,9 @@ sub initialize {
 
     $self->{defined}{IndexParserForm}   =   \&set_index_parser_form;
 
-    $self->{defined}{CommandConfigure}  =   'sh configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
+    $self->{defined}{AdditionalArgument} = '--without-tcltk';
+
+    $self->{defined}{TestAction}        =   'test';
 
     return $self;
 }

@@ -1,6 +1,6 @@
 package Enbld::Definition::Openssl;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -15,24 +15,19 @@ sub initialize {
     $self->{defined}{VersionForm}       =   '\d\.\d\.\d\w?';
     $self->{defined}{DownloadSite}      =   'http://www.openssl.org/source/';
 
-    $self->{defined}{AdditionalArgument}=   \&set_argument;
+    $self->{defined}{DarwinArgument}    =   'darwin64-x86_64-cc';
 
     $self->{defined}{SortedVersionList} =   \&set_sorted_version_list;
 
+    $self->{defined}{TestAction}        =   'test';
+
     $self->{defined}{CommandConfigure}  =   \&set_commandconfigure;
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
 
     return $self;
 }
 
 sub set_commandconfigure {
     return $^O eq 'darwin' ? './configure' : './config';
-}
-
-sub set_argument {
-    return $^O eq 'darwin' ? 'darwin64-x86_64-cc' : undef;
 }
 
 sub set_sorted_version_list {

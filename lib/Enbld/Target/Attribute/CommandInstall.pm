@@ -1,6 +1,6 @@
 package Enbld::Target::Attribute::CommandInstall;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Target::AttributeExtension::Command/;
@@ -9,7 +9,8 @@ sub initialize {
     my ( $self, $param ) = @_;
 
     if ( ! defined $param ) {
-        $self->{value} = 'make install';
+
+        $self->{value} = $self->make_command . ' install';
         $self->{is_evaluated}++;
 
         return $self;

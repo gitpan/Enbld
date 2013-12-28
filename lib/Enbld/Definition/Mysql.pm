@@ -1,6 +1,6 @@
 package Enbld::Definition::Mysql;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -29,10 +29,9 @@ sub initialize {
 
     $self->{defined}{Prefix}            =   '-DCMAKE_INSTALL_PREFIX=';
 
+    $self->{defined}{TestAction}        =   'test';
+
     $self->{defined}{CommandConfigure}  =   'cmake .';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
 
     return $self;
 }

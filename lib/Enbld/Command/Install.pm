@@ -1,7 +1,9 @@
 package Enbld::Command::Install;
 
-use 5.012;
+use strict;
 use warnings;
+
+use 5.010001;
 
 use parent qw/Enbld::Command/;
 
@@ -28,6 +30,12 @@ sub do {
         return $target->install;
     } ( 'Enbld::Error' => sub {
         Enbld::Message->alert( $@ );
+
+        if ( $^O ne 'darwin' ) {
+            say "If you run Enbld at Linux or BSD, there is a possibility " .
+            "that the Software which depends is not installed.";
+        }
+
         say "\nPlease check build logile:" . Enbld::Logger->logfile;
 
 		return;

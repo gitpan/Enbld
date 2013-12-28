@@ -4,8 +4,6 @@ author:
   - 'magnolia <magnolia.k@me.com>'
 build_requires:
   ExtUtils::MakeMaker: 0
-  Test::Exception: 0
-  Test::Output: 0
 dynamic_config: 1
 generated_by: 'ExtUtils::MakeMaker version 6.84, CPAN::Meta::Converter version 2.133380'
 license: perl
@@ -23,10 +21,15 @@ requires:
   LWP: 0
   LWP::Protocol::https: 0
   Mozilla::CA: 0
+  Test::Exception: 0
+  Test::More: 0.98
+  Test::Output: 0
   Try::Lite: 0
-  perl: 5.012
+  autodie: 0
+  parent: 0
+  perl: 5.010001
 resources:
   bugtracker: https://github.com/magnolia-k/Enbld/issues
   homepage: https://github.com/magnolia-k/Enbld
   repository: https://github.com/magnolia-k/Enbld.git
-version: 0.7028
+version: 0.7029

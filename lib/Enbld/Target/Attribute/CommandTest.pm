@@ -1,6 +1,6 @@
 package Enbld::Target::Attribute::CommandTest;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Target::AttributeExtension::Command/;
@@ -9,8 +9,13 @@ sub initialize {
     my ( $self, $param ) = @_;
 
     if ( ! defined $param ) {
-        $self->{value} = 'make check';
-        $self->{is_evaluated}++;
+        my $make = $self->make_command;
+
+        $self->{callback} = sub {
+            my $attributes = shift;
+
+            return $make . ' ' . $attributes->TestAction;
+        };
 
         return $self;
     }

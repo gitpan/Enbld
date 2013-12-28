@@ -1,6 +1,6 @@
 package Enbld::Definition::Wget;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -19,7 +19,8 @@ sub initialize {
     $self->{defined}{ArchiveName}       =   'wget';
     $self->{defined}{VersionForm}       =   '\d{1,2}\.\d{1,2}(\.\d{1,2})?';
     
-    $self->{defined}{AdditionalArgument}=   \&set_argument;
+    $self->{defined}{DarwinArgument}    =   \&set_argument;
+    $self->{defined}{DefaultArgument}   =   '--with-ssl=openssl --enable-iri';
 
     return $self;
 }

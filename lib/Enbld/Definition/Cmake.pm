@@ -1,6 +1,6 @@
 package Enbld::Definition::Cmake;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -18,10 +18,7 @@ sub initialize {
     $self->{defined}{VersionList}       =   \&set_versionlist;
     $self->{defined}{URL}               =   \&set_url;
 
-    $self->{defined}{CommandConfigure}  =   './configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
+    $self->{defined}{TestAction}        =   'test';
 
     return $self;
 }

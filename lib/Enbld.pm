@@ -1,9 +1,11 @@
 package Enbld;
 
-use 5.012;
+use strict;
 use warnings;
 
-our $VERSION = '0.7028';
+use 5.010001;
+
+our $VERSION = '0.7029';
 
 use FindBin qw/$Script/;
 use Getopt::Long;
@@ -121,6 +123,11 @@ sub build_target {
             $target->install_declared( \%target_collection );
     } ( 'Enbld::Error' => sub {
         Enbld::Message->alert( $@ );
+
+        if ( $^O ne 'darwin' ) {
+            say "If you run Enbld at Linux or BSD, there is a possibility " .
+            "that the Software which depends is not installed.";
+        }
 
         say "\n" . "Please check build logile:" . Enbld::Logger->logfile;
 
@@ -617,11 +624,11 @@ Probably, it may operate also on Linux (Debian, Ubuntu etc.). When not running, 
 
 =over
 
-=item * perl 5.12 or above
+=item * perl 5.10.1 or above
 
 Enbld certainly use the system perl (`/usr/bin/perl`).
 
-=item * make
+=item * GNU Make
 
 =item * compiler (gcc or clang)
 
@@ -639,7 +646,7 @@ Enbld installs all the components in a C<$HOME/.enbld> directory. Therefore, it 
 
 In C<.bashrc> or C<.bash_profile>, add below setting.
 
- export $PATH=$HOME/.enbld/bin:$HOME/.enbld/extlib/bin:$PATH
+ export PATH=$HOME/.enbld/bin:$HOME/.enbld/extlib/bin:$PATH
  export MANPATH=$HOME/.enbld/share/man:$HOME/.enbld/man:$MANPATH
 
 =head1 GETTING STARTED Enbld
@@ -724,6 +731,21 @@ perl 5.18.1 with thread is builded.
  $ perl -v
     
  This is perl 5, version 18, subversion 1 (v5.18.1) built for darwin-thread-multi-2level
+
+=head2 INSTALL SOFTWARE WHICH DEPENDS 
+
+When using Enbld at OS X, Enbld also solve the dependencies between softwares automatically.
+
+For example, when the is equal to which needs a libidn library for wget, and Enbld install wget, they also install libidn automatically.
+
+  $ enblder install wget
+  =====> Start building target 'wget'.
+  =====> Found dependencies.
+  --> Dependency 'libidn'.
+  --> libidn is not installed yet.
+  =====> Start building target 'libidn'.
+
+Please solve the software which needs the fix patterns of a dependencies at that of a many using the package Management manager of operating system in operating system of Linux and BSD(s) other than OS X.
 
 =head2 UTILITY COMMAND 'enblder'
 

@@ -1,6 +1,6 @@
 package Enbld::Definition;
 
-use 5.012;
+use strict;
 use warnings;
 
 use Module::Load;
@@ -14,7 +14,11 @@ sub new {
 
     my $self = {
         defined => {
+            DefaultArgument     =>  undef,
+            DarwinArgument      =>  undef,
+
             AdditionalArgument  =>  undef,
+
             AllowedCondition    =>  undef,
             ArchiveName         =>  undef,
             CopyFiles           =>  undef,
@@ -34,7 +38,9 @@ sub new {
 #           VersionCondition    =>  undef,
             VersionForm         =>  undef,
             WebSite             =>  undef,
-            
+           
+            TestAction          =>  undef,
+
             CommandConfigure    =>  undef,
             CommandMake         =>  undef,
             CommandTest         =>  undef,

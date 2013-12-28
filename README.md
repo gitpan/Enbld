@@ -28,11 +28,11 @@ When not running, I'm waiting for the report :)
 
 # REQUIREMENTS
 
- - perl 5.12 or above
+ - perl 5.10.1 or above
 
     NOTE:Enbld certainly use the system perl (`/usr/bin/perl`).
 
- - make
+ - GNU Make
 
  - compiler (gcc or clang)
 

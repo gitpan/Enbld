@@ -11,14 +11,9 @@ WriteMakefile(
     VERSION_FROM     => 'lib/Enbld.pm',
     ABSTRACT_FROM    => 'lib/Enbld.pm',
     LICENSE          => 'perl',
-    MIN_PERL_VERSION => 5.012,
+    MIN_PERL_VERSION => 5.010001,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 6.82,
-    },
-
-    TEST_REQUIRES => {
-        'Test::Output'      => 0,
-        'Test::Exception'   => 0,
     },
 
     "EXE_FILES" => [
@@ -28,11 +23,17 @@ WriteMakefile(
     ],
 
     PREREQ_PM		=> {
+        'autodie'               => 0,
+        'parent'                => 0,
         'LWP'                   => 0,
         'LWP::Protocol::https'  => 0,
         'Mozilla::CA'           => 0,
         'Try::Lite'             => 0,
         'File::Copy::Recursive' => 0,
+
+        'Test::More'        => 0.98,
+        'Test::Output'      => 0,
+        'Test::Exception'   => 0,
     },
 
 	META_MERGE		=> {

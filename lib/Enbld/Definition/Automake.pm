@@ -1,6 +1,6 @@
 package Enbld::Definition::Automake;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -16,7 +16,7 @@ sub initialize {
     $self->{defined}{ArchiveName}  = 'automake';
     $self->{defined}{VersionForm}  = '1\.\d{1,2}(\.\d{1,2})?';
 
-    $self->{defined}{Dependencies} = [ 'autoconf' ];
+    $self->{defined}{Dependencies} = sub { return [ 'autoconf' ] };
 
     return $self;
 }

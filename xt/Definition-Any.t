@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 
-use 5.012;
+use strict;
 use warnings;
 
 use Test::More;
 use Test::Enbld::Definition;
+
+use FindBin;
 
 my @def_list = qw/
  apache apr autoconf automake cmake emacs git groff hello
@@ -23,6 +25,8 @@ for my $def ( @def_list ) {
 
     my $target = Enbld::Target->new( $def );
     my $installed = eval { $target->install };
+
+    chdir $FindBin::Bin;
 
     ok( $installed, "build $def" ) or diag( $@ );
 }

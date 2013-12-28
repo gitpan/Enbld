@@ -28,11 +28,11 @@ Enbldは、ソフトウェア開発に必要なソフトウェア（プログラ
 
 # 動作環境
 
- - perl 5.12以上
+ - perl 5.10.1以上
 
   注:Enbldは必ずsystem perl(`/usr/bin/perl`)を使います。
 
- - make
+ - GNU Make
 
  - コンパイラ (gccか、clang)
 

@@ -1,6 +1,6 @@
 package Enbld::Definition::Testapp;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -20,10 +20,7 @@ sub initialize {
     $self->{defined}{PatchFiles}        =
         [ 'http://www.example.com/TestAppPatch.txt' ];
 
-    $self->{defined}{CommandConfigure}  =   './configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
+    $self->{defined}{TestAction}        =   'test';
 
     return $self;
 }

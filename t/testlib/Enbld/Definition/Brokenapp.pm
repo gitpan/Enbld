@@ -1,6 +1,6 @@
 package Enbld::Definition::Brokenapp;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -19,7 +19,6 @@ sub initialize {
     $self->{defined}{DownloadSite}      =   'http://www.example.com/';
 
     $self->{defined}{CommandConfigure}  =   undef;
-    $self->{defined}{CommandMake}       =   'make';
     $self->{defined}{CommandTest}       =   undef;
     $self->{defined}{CommandInstall}    =   undef;
 

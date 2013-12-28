@@ -1,6 +1,6 @@
 package Enbld::Definition::Testdependant;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -15,13 +15,10 @@ sub initialize {
     $self->{defined}{DistName}          =   'TestDependant';
     $self->{defined}{VersionForm}       =   '\d\.\d';
     $self->{defined}{Extension}         =   'tar.gz';
-    $self->{defined}{Dependencies}      =   [ 'testapp' ],
+    $self->{defined}{Dependencies}      =   sub { return [ 'testapp' ] },
     $self->{defined}{DownloadSite}      =   'http://www.example.com/';
 
-    $self->{defined}{CommandConfigure}  =   './configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
+    $self->{defined}{TestAction}        =   'test';
 
     return $self;
 }

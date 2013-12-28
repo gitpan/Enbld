@@ -1,6 +1,6 @@
 package Enbld::Definition::Tmux;
 
-use 5.012;
+use strict;
 use warnings;
 
 use parent qw/Enbld::Definition/;
@@ -10,7 +10,7 @@ sub initialize {
 
     $self->SUPER::initialize;
 
-    $self->{defined}{AdditionalArgument}   =  \&set_argument;
+    $self->{defined}{DarwinArgument}    =  \&set_argument;
     $self->{defined}{ArchiveName}       =   'tmux';
     $self->{defined}{WebSite}           =   'http://tmux.sourceforge.net';
     $self->{defined}{VersionForm}       =   '\d\.\d';
@@ -21,10 +21,9 @@ sub initialize {
     $self->{defined}{IndexParserForm}   =   \&set_index_parser_form;
     $self->{defined}{URL}               =   \&set_URL;
 
+    $self->{defined}{TestAction}        =   'test';
+
     $self->{defined}{CommandConfigure}  =   'sh configure';
-    $self->{defined}{CommandMake}       =   'make';
-    $self->{defined}{CommandTest}       =   'make test';
-    $self->{defined}{CommandInstall}    =   'make install';
 
     return $self;
 }
