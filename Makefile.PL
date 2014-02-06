@@ -12,9 +12,11 @@ WriteMakefile(
     ABSTRACT_FROM    => 'lib/Enbld.pm',
     LICENSE          => 'perl',
     MIN_PERL_VERSION => 5.010001,
+
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 6.66,
     },
+
     BUILD_REQUIRES => {
         'ExtUtils::MakeMaker' => 6.66,
     },
@@ -67,3 +69,4 @@ WriteMakefile(
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Enbld-*' },
 );
+
