@@ -23,9 +23,8 @@ no_index:
     - xt
 requires:
   File::Copy::Recursive: 0
-  LWP: 0
-  LWP::Protocol::https: 0
-  Mozilla::CA: 0
+  HTTP::Tiny: 0.041
+  IO::Socket::SSL: 0
   Try::Lite: 0
   autodie: 0
   parent: 0
@@ -35,4 +34,4 @@ resources:
   bugtracker: https://github.com/magnolia-k/Enbld/issues
   homepage: https://github.com/magnolia-k/Enbld
   repository: https://github.com/magnolia-k/Enbld.git
-version: 0.7031
+version: 0.7032_1
