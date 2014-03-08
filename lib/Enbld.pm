@@ -5,7 +5,7 @@ use warnings;
 
 use 5.010001;
 
-our $VERSION = '0.7034';
+our $VERSION = '0.7035';
 
 use FindBin qw/$Script/;
 use Getopt::Long;
@@ -438,6 +438,11 @@ sub parse_option {
             'f|force'       => sub { $force++ },
             'd|deploy=s'    => \$deploy_path,
             );
+
+    ### to absolute path
+    unless ( File::Spec->file_name_is_absolute( $deploy_path ) ) {
+        $deploy_path = File::Spec->rel2abs( $deploy_path );
+    }
 
     require Enbld::Feature;
     Enbld::Feature->initialize(
