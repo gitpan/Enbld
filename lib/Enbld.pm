@@ -3,9 +3,11 @@ package Enbld;
 use strict;
 use warnings;
 
+use Carp;
+
 use 5.010001;
 
-our $VERSION = '0.7035';
+our $VERSION = '0.7036';
 
 use FindBin qw/$Script/;
 use Getopt::Long;
@@ -20,6 +22,7 @@ our @EXPORT = qw/
     define
     version
     make_test
+    module_file
     modules
     arguments
     annotation
@@ -281,14 +284,18 @@ sub annotation($) {
     $condition_ref->{annotation} = $annotation;
 }
 
-sub modules($) {
-    my $modules = shift;
+sub module_file($) {
+    my $module_file = shift;
 
-    if ( ref( $modules ) ne 'HASH' ) {
-        _err( "Function 'modules' requires HASH reference type parameter." );
+    if ( ref( $module_file ) ) {
+        _err( "Function 'module_file' requires string type parameter." );
     }
 
-    $condition_ref->{modules} = $modules;
+    $condition_ref->{module_file} = $module_file;
+}
+
+sub modules {
+    croak "'modules' function is deparecated. Please use 'module_file'.";
 }
 
 our $rcfile_condition;
@@ -440,8 +447,10 @@ sub parse_option {
             );
 
     ### to absolute path
-    unless ( File::Spec->file_name_is_absolute( $deploy_path ) ) {
-        $deploy_path = File::Spec->rel2abs( $deploy_path );
+    if ( $deploy_path ) {
+        unless ( File::Spec->file_name_is_absolute( $deploy_path ) ) {
+            $deploy_path = File::Spec->rel2abs( $deploy_path );
+        }
     }
 
     require Enbld::Feature;
