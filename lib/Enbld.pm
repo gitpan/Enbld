@@ -7,7 +7,7 @@ use Carp;
 
 use 5.010001;
 
-our $VERSION = '0.7036';
+our $VERSION = '0.7037';
 
 use FindBin qw/$Script/;
 use Getopt::Long;
@@ -486,7 +486,7 @@ sub parse_option {
 sub _err {
     my ( $msg, $param ) = @_;
 
-    die( Enbld::Error->new( $msg, $param ) );
+    Enbld::Error->throw( $msg, $param );
 }
 
 1;
